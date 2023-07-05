@@ -1,0 +1,11 @@
+<div class="rodape">
+  <div class="botoes">
+    <span [ngClass]="{'material-symbols-outlined listar': true, 'selecionado': tipoTarefa && !detalhes}" (click)="listar()"> list
+    </span>
+    <div class="botaoAdicionar">
+      <span class="material-symbols-outlined adicionar" (click)="openModalNovaTarefa()"> add </span>
+    </div>
+    <span [ngClass]="{'material-symbols-outlined listarPrioridade': true, 'selecionado': !tipoTarefa && !detalhes}"
+      (click)="listarPrioridades()"> bookmark </span>
+  </div>
+</div>

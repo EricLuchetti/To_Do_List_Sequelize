@@ -1,0 +1,267 @@
+.container {
+	display: block;
+	height: 100% !important;
+	min-height: 100vh !important;
+	max-height: 100%;
+	max-width: 100%;
+	width: 100%;
+	background-color: var(--cor-fundo);
+	color: var(--cor-letra);
+	overflow: hidden;
+
+	.divisao {
+		display: flex;
+		justify-content: center;
+		padding-bottom: 10px;
+
+		.linha-divisoria {
+			border-top: 1px solid black;
+			border-color: var(--cor-letra);
+		}
+
+	}
+
+	.grid-botao {
+		position: fixed;
+		bottom: 10vh;
+		right: 3vh;
+
+		.botao-adicionar {
+			width: 70px;
+			height: 70px;
+
+			mat-icon {
+				font-size: 25px;
+			}
+		}
+	}
+
+	header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 0 0 10px;
+
+
+		// Input Buscar
+		.buscar-tarefas {
+			display: flex;
+			min-width: 100px;
+			max-width: 100%;
+			width: 100%;
+			padding-bottom: 20px;
+
+			.filtro {
+				display: flex;
+				text-align: center;
+				margin: 0 auto;
+
+				width: 383px;
+				height: 40px;
+
+				background: #FFFFFF;
+				border: 1px solid rgba(0, 0, 0, 0.4);
+				box-shadow: 0px 16px 24px rgba(255, 255, 255, 0.14);
+				border-radius: 20px;
+			}
+		}
+	}
+
+	// Loader
+	.loader {
+		display: flex;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.ff-inter {
+		display: none;
+		text-align: center;
+		color: var(--cor-letra);
+
+		&.sem-tarefas {
+			display: block;
+		}
+
+		&.titulo {
+			padding-top: 10px;
+			display: block;
+		}
+	}
+
+	.mural {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.5rem;
+	}
+
+	@media screen and (max-width: 600px) {
+		.divisao {
+			display: none;
+		}
+
+		.botao-adicionar {
+			display: none;
+		}
+
+		.mural {
+			padding-bottom: 95px;
+		}
+	}
+
+	@media screen and (max-width: 782px) {
+		.linha-divisoria {
+			width: 390px;
+		}
+	}
+
+	@media screen and (min-width: 783px) {
+		.mural {
+			display: grid;
+			grid-template-areas:
+				"header header"
+				"aside aside"
+				"main main";
+			justify-content: center;
+			gap: 0.5rem;
+		}
+
+		.linha-divisoria {
+			width: 780px;
+		}
+	}
+
+	@media screen and (min-width: 1190px) {
+		.mural {
+			display: grid;
+			grid-template-areas:
+				"header header header"
+				"aside aside aside"
+				"main main main";
+			justify-content: center;
+			gap: 0.5rem;
+		}
+
+		.linha-divisoria {
+			width: 1170px;
+		}
+	}
+
+	.div-tarefa {
+		display: flex;
+		justify-self: flex-start;
+		height: 100px !important;
+	}
+
+	//  Lista
+	.lista-tarefa {
+		display: flex;
+		box-sizing: border-box;
+		justify-content: space-between;
+
+		width: 387px;
+		height: 100px;
+		margin: 0 auto;
+
+		border: 2px solid #D6D6D6;
+		border-radius: 20px;
+
+		padding: 2px;
+
+		.material-symbols-outlined {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		.checkbox {
+			display: flex;
+			align-self: center;
+			justify-content: center;
+			flex-grow: 1;
+			margin-right: 6px;
+			color: var(--cor-amarelo);
+		}
+
+		.tarefa {
+			display: grid;
+			grid-template-areas:
+				"header aside"
+				"main main";
+			grid-template-columns: 17em 2em;
+			grid-template-rows: auto auto;
+			flex-direction: column;
+			margin: 6px;
+			flex-grow: 3;
+
+			mat-icon {
+				display: flex;
+				margin-top: 0;
+				justify-self: flex-end;
+				color: var(--cor-amarelo);
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+
+			p {
+				margin-top: auto;
+				margin-bottom: auto;
+				color: var(--cor-letra);
+			}
+
+			.horario {
+				color: var(--cor-letra);
+
+				&.concluida {
+					text-decoration: line-through;
+					color: var(--cor-letra);
+				}
+			}
+
+			.conteudo {
+				color: var(--cor-letra);
+				word-wrap: break-word;
+
+				&.concluida {
+					text-decoration: line-through;
+					color: var(--cor-letra);
+				}
+
+			}
+		}
+
+		.acoes {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			margin: 6px;
+			flex-grow: 1;
+
+
+			.material-symbols-outlined {
+				margin: 0 auto;
+				color: var(--cor-amarelo);
+
+				.botao-editar {
+					margin: 0 auto;
+				}
+
+				.botao-excluir {
+					margin: 0 auto;
+				}
+
+			}
+		}
+	}
+
+}
+
+::ng-deep mat-progress-spinner {
+	width: 15vh !important;
+	height: 15vh !important;
+	margin: 0 auto !important;
+	margin-top: 25vh !important;
+}

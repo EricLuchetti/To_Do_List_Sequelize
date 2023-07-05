@@ -1,0 +1,38 @@
+<section class="container">
+	<header class="header d-flex">
+		<h2 class="ff-inter titulo">{{ labelTitulo }}</h2>
+	</header>
+	<div class="divisao"><a class="linha-divisoria"></a></div>
+	<div class="mural">
+		<form [formGroup]="form">
+			<div class="dados">
+				<mat-label>Nome: </mat-label><input matInput class="input-dados" placeholder="Nome"
+					formControlName="nome">
+				<span class="material-symbols-outlined" (click)="atualizar()">
+					edit
+				</span>
+			</div>
+			<div class="dados">
+				<mat-label>Login: </mat-label><input matInput class="input-dados" placeholder="Login"
+					formControlName="login">
+				<span class="material-symbols-outlined" (click)="atualizar()">
+					edit
+				</span>
+			</div>
+			<div class="dados">
+				<mat-label>E-mail: </mat-label><input matInput class="input-dados" placeholder="E-mail"
+					formControlName="email">
+				<span class="material-symbols-outlined" (click)="atualizar()">
+					edit
+				</span>
+			</div>
+		</form>
+		<div class="dados">
+			<mat-label>Senha: </mat-label><a (click)="openModalEditarSenha()">Alterar senha</a>
+		</div>
+	</div>
+</section>
+
+<footer>
+	<app-rodape (listarTarefas)="tipoLista($event)" [tipoTarefa]="tipoTarefa" [detalhes]="detalhes"></app-rodape>
+</footer>

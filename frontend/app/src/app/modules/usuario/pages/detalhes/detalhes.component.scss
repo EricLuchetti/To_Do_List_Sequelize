@@ -1,0 +1,258 @@
+.container {
+	display: block;
+	height: 100% !important;
+	min-height: 100vh !important;
+	max-height: 100%;
+	max-width: 100%;
+	width: 100%;
+	background-color: var(--cor-fundo);
+	color: var(--cor-letra);
+	overflow: hidden;
+
+	.divisao {
+		display: flex;
+		justify-content: center;
+		padding-bottom: 10px;
+
+		.linha-divisoria {
+			border-top: 1px solid black;
+			border-color: var(--cor-letra);
+		}
+
+	}
+
+	header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 0 0 10px;
+	}
+
+	// Loader
+	.loader {
+		display: flex;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.ff-inter {
+		display: none;
+		text-align: center;
+		color: var(--cor-letra);
+
+		&.sem-tarefas {
+			display: block;
+		}
+
+		&.titulo {
+			padding-top: 10px;
+			display: block;
+		}
+	}
+
+	.mural {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		text-align: left;
+		font-size: 17px;
+		margin: 0 auto;
+
+		.dados {
+			display: grid;
+			justify-content: center;
+			align-items: center;
+			grid-template-areas:
+				"a b c";
+			margin: 1rem 0;
+
+			.material-symbols-outlined:hover {
+				cursor: pointer;
+			}
+
+			.input-dados {
+				background: var(--cor-fundo);
+				color: var(--cor-letra);
+				font-size: 17px;
+				height: 30px;
+				border: 1px solid var(--cor-letra);
+				box-shadow: 0px 16px 24px rgba(255, 255, 255, 0.14);
+				border-radius: 5px;
+			}
+
+			a:hover {
+				cursor: pointer;
+				color: var(--cor-amarelo);
+			}
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.linha-divisoria {
+			width: 300px;
+		}
+
+		.mural {
+			padding-bottom: 95px;
+		}
+
+		.dados {
+			grid-template-areas:
+				"a b c";
+			grid-template-columns: 70px 300px 30px;
+		}
+
+		.input-dados {
+			width: 250px;
+		}
+	}
+
+	@media screen and (min-width: 601px) and (max-width: 782px) {
+		.linha-divisoria {
+			width: 390px;
+		}
+
+		.dados {
+			grid-template-areas:
+				"a b c";
+			grid-template-columns: 70px 400px 30px;
+		}
+
+		.input-dados {
+			width: 350px;
+		}
+	}
+
+	@media screen and (min-width: 783px) {
+		.linha-divisoria {
+			width: 780px;
+		}
+
+		.dados {
+			grid-template-areas:
+				"a b c";
+			grid-template-columns: 70px 450px 30px;
+		}
+
+		.input-dados {
+			width: 400px;
+		}
+	}
+
+	@media screen and (min-width: 1190px) {
+		.linha-divisoria {
+			width: 1170px;
+		}
+	}
+
+	.div-tarefa {
+		display: flex;
+		justify-self: flex-start;
+		height: 100px !important;
+	}
+
+	//  Lista
+	.lista-tarefa {
+		display: flex;
+		box-sizing: border-box;
+		justify-content: space-between;
+
+		width: 387px;
+		height: 100px;
+		margin: 0 auto;
+
+		border: 2px solid #D6D6D6;
+		border-radius: 20px;
+
+		padding: 2px;
+
+		.material-symbols-outlined {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		.checkbox {
+			display: flex;
+			align-self: center;
+			justify-content: center;
+			flex-grow: 1;
+			margin-right: 6px;
+			color: var(--cor-amarelo);
+		}
+
+		.tarefa {
+			display: grid;
+			grid-template-areas:
+				"header aside"
+				"main main";
+			grid-template-columns: 17em 2em;
+			grid-template-rows: auto auto;
+			flex-direction: column;
+			margin: 6px;
+			flex-grow: 3;
+
+			mat-icon {
+				display: flex;
+				margin-top: 0;
+				justify-self: flex-end;
+				color: var(--cor-amarelo);
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+
+			.horario {
+				color: var(--cor-letra);
+
+				&.concluida {
+					text-decoration: line-through;
+					color: var(--cor-letra);
+				}
+			}
+
+			.conteudo {
+				color: var(--cor-letra);
+				word-wrap: break-word;
+
+				&.concluida {
+					text-decoration: line-through;
+					color: var(--cor-letra);
+				}
+
+			}
+		}
+
+		.acoes {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			margin: 6px;
+			flex-grow: 1;
+
+
+			.material-symbols-outlined {
+				margin: 0 auto;
+				color: var(--cor-amarelo);
+
+				.botao-editar {
+					margin: 0 auto;
+				}
+
+				.botao-excluir {
+					margin: 0 auto;
+				}
+
+			}
+		}
+	}
+
+}
+
+::ng-deep mat-progress-spinner {
+	width: 15vh !important;
+	height: 15vh !important;
+	margin: 0 auto !important;
+	margin-top: 25vh !important;
+}

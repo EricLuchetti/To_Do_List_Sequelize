@@ -1,0 +1,61 @@
+<div *ngIf="hide; else codigo" align="center" class="container">
+	<mat-card>
+		<div class="card-header">
+			<p class="card-title">LISTA DE TAREFAS</p>
+			<p class="text-secondary">Digite seu login e e-mail</p>
+		</div>
+		<form [formGroup]="form">
+			<div class="row mt-2">
+				<div class="form-content">
+					<mat-form-field color="accent" appearance="outline">
+						<mat-label>Login</mat-label>
+						<input matInput formControlName="login">
+					</mat-form-field>
+				</div>
+				<div class="form-content">
+					<mat-form-field color="accent" appearance="outline">
+						<mat-label>E-mail</mat-label>
+						<input matInput formControlName="email">
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="actions">
+				<button mat-raised-button color="warn" routerLink="/auth/login">Cancelar</button>
+				<button mat-raised-button color="accent" (click)="enviarCodigo()"
+					[disabled]="!form.valid">Enviar</button>
+			</div>
+		</form>
+	</mat-card>
+</div>
+
+<ng-template #codigo>
+	<div align="center" class="container">
+		<mat-card>
+			<div class="card-header">
+				<p class="card-title">LISTA DE TAREFAS</p>
+				<p class="text-secondary">Digite o código de recuperação</p>
+			</div>
+			<form [formGroup]="formCodigo">
+				<div class="row mt-2">
+					<div class="form-content">
+						<mat-form-field color="accent" appearance="outline">
+							<mat-label>Código de Recuperação</mat-label>
+							<input matInput formControlName="codigo">
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="actions">
+					<button mat-raised-button color="warn" routerLink="/auth/login">Cancelar</button>
+					<button mat-raised-button color="accent" (click)="validarCodigo()"
+						[disabled]="!formCodigo.valid">Enviar</button>
+				</div>
+				<div class="reenviar-codigo" align="center">
+					<p class="text-secondary mat-body-1">Não recebeu o código?
+						<a role="button" class="clique-aqui" role="button" (click)="reenviarCodigo()"
+							routerLinkActive="active">Reenviar código</a>
+					</p>
+				</div>
+			</form>
+		</mat-card>
+	</div>
+</ng-template>

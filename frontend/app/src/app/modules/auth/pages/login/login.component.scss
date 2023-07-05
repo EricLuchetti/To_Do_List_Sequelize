@@ -1,0 +1,31 @@
+.container {
+	padding-top: 20vh;
+
+	.card-header {
+		padding-top: 20px;
+
+		.card-title {
+			font-size: 30px;
+			font-family: 'Paytone One', sans-serif;
+			color: var(--cor-amarelo);
+			margin-bottom: 50px;
+		}
+	}
+
+	mat-card {
+		max-width: 400px;
+		height: 450px;
+	}
+
+	mat-form-field {
+		width: 300px;
+	}
+
+	.recuperar-senha {
+		margin-top: 20px;
+	}
+
+	.cadastrar {
+		margin: auto;
+	}
+}

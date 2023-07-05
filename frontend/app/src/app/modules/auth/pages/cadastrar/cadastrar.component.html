@@ -1,0 +1,55 @@
+<div align="center" class="container">
+	<mat-card>
+		<div class="card-header">
+			<p class="card-title">LISTA DE TAREFAS</p>
+			<p class="text-secondary">Preencha as informações abaixo</p>
+		</div>
+		<form [formGroup]="form">
+			<div class="row mt-2">
+				<div class="form-content">
+					<mat-form-field color="accent" appearance="outline">
+						<mat-label>Nome</mat-label>
+						<input matInput formControlName="nome">
+					</mat-form-field>
+				</div>
+				<div class="form-content">
+					<mat-form-field color="accent" appearance="outline">
+						<mat-label>E-mail</mat-label>
+						<input matInput formControlName="email">
+					</mat-form-field>
+				</div>
+				<div class="form-content">
+					<mat-form-field color="accent" appearance="outline">
+						<mat-label>Login</mat-label>
+						<input matInput formControlName="login">
+					</mat-form-field>
+				</div>
+				<div class="form-content">
+					<mat-form-field color="accent" appearance="outline">
+						<mat-label>Senha</mat-label>
+						<input matInput [type]="hide ? 'password' : 'text'" formControlName="senha">
+						<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+							[attr.aria-pressed]="hide">
+							<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+						</button>
+					</mat-form-field>
+				</div>
+				<div class="form-content">
+					<mat-form-field color="accent" appearance="outline">
+						<mat-label>Confirmar Senha</mat-label>
+						<input matInput [type]="hideConfirmar ? 'password' : 'text'" formControlName="confirmarSenha">
+						<button mat-icon-button matSuffix (click)="hideConfirmar = !hideConfirmar"
+							[attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmar">
+							<mat-icon>{{hideConfirmar ? 'visibility_off' : 'visibility'}}</mat-icon>
+						</button>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="actions">
+				<button mat-raised-button color="warn" routerLink="/auth/login">Cancelar</button>
+				<button mat-raised-button color="accent" (click)="cadastrar()"
+					[disabled]="!form.valid">Cadastrar</button>
+			</div>
+		</form>
+	</mat-card>
+</div>

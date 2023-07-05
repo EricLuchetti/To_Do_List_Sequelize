@@ -1,0 +1,47 @@
+<section class="container">
+	<header class="header d-flex">
+		<h2 class="ff-inter titulo">{{ labelTitulo }}</h2>
+		<div class="buscar-tarefas">
+			<input type="search" [(ngModel)]="filtro" class="filtro" placeholder="O que você procura?"
+				(keyup)="pesquisarTarefas()" />
+		</div>
+	</header>
+	<div class="divisao"><a class="linha-divisoria"></a></div>
+	<div *ngIf="loader" class="loader">
+		<mat-progress-spinner [color]="color" [strokeWidth]="strokeWidth" mode="indeterminate"></mat-progress-spinner>
+	</div>
+	<div class="mural" *ngIf="temTarefa; else semTarefas">
+		<div class="div-tarefa" *ngFor="let tarefa of listaPrioridades">
+			<div class="lista-tarefa">
+				<span class="material-symbols-outlined checkbox" (click)="concluir(tarefa)">{{ concluida(tarefa)
+					}}</span>
+				<div class="tarefa">
+					<p [ngClass]="{'horario': true, 'concluida': tarefa.concluida}"> {{ tarefa.horario }} </p>
+					<mat-icon [ngClass]="{'prioridade': tarefa.prioridade}" (click)="mudarPrioridade(tarefa)">{{
+						prioridade(tarefa)
+						}}</mat-icon>
+					<p [ngClass]="{'conteudo': true, 'concluida': tarefa.concluida}">{{ tarefa.tarefa }}</p>
+				</div>
+				<div class="acoes">
+					<span class="material-symbols-outlined botao-editar" (click)="editar(tarefa)"> edit_note </span>
+					<span class="material-symbols-outlined botao-excluir" (click)="excluir(tarefa)"> delete </span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="grid-botao">
+		<button class="botao-adicionar" mat-fab color="accent" (click)="openModalNovaTarefa()">
+			<mat-icon>add_task</mat-icon>
+		</button>
+	</div>
+</section>
+
+<ng-template #semTarefas>
+	<div [ngClass]="{'ff-inter': true, 'sem-tarefas': !temTarefa}">
+		<p>Ainda não há tarefas cadastradas</p>
+	</div>
+</ng-template>
+
+<footer>
+	<app-rodape (listarTarefas)="tipoLista($event)" [tipoTarefa]="tipoTarefa"></app-rodape>
+</footer>

@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  to_do_list_frontend:
+    build:
+      dockerfile : ./frontend.dockerfile
+      context: ./frontend
+    container_name: to_do_list_frontend
+    volumes:
+      - ./frontend/app:/home/frontend/app
+    ports:
+      - "4200:4200"
+    networks:
+      - to_do_list_rede
+    restart: unless-stopped
+    depends_on:
+      - to_do_list_api
+
+  to_do_list_api:
+    build:
+      dockerfile : ./api.dockerfile
+      context: ./api
+    container_name: to_do_list_api
+    volumes:
+      - ./api/app:/home/api/app
+    ports:
+      - "3000:3000"
+    networks:
+      - to_do_list_rede
+    restart: unless-stopped
+    depends_on:
+      - to_do_list_mysql
+
+  to_do_list_mysql: 
+    build:
+      dockerfile : ./mysql/mysql.dockerfile
+      context: .
+    container_name: to_do_list_mysql
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=to_do_list
+    restart: unless-stopped
+    volumes:
+      - ../volumes/to_do_list/mysql:/var/lib/to_do_list/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - to_do_list_rede
+
+networks: 
+  to_do_list_rede:
+    driver: bridge

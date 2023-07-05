@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+// regular style toast
+@import 'ngx-toastr/toastr';
+
+// if you'd like to use it without importing all of bootstrap it requires
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+html,
+body {
+    height: 100% !important;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+    --cor-amarelo: rgb(223, 189, 67);
+    --cor-fundo: white;
+    --cor-letra: black;
+}

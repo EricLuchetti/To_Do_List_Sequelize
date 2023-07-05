@@ -1,0 +1,41 @@
+<div class="teste" mat-dialog-content>
+	<form [formGroup]="form">
+		<div class="row">
+			<div class="col-md-6">
+				<mat-form-field color="accent" appearance="outline">
+					<mat-label>Senha Atual</mat-label>
+					<input matInput [type]="hide ? 'password' : 'text'" formControlName="senhaAtual">
+					<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+						[attr.aria-pressed]="hide">
+						<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+					</button>
+				</mat-form-field>
+			</div>
+			<div class="col-md-6">
+				<mat-form-field color="accent" appearance="outline">
+					<mat-label>Senha Nova</mat-label>
+					<input matInput [type]="hideSenhaNova ? 'password' : 'text'" formControlName="senha">
+					<button mat-icon-button matSuffix (click)="hideSenhaNova = !hideSenhaNova" [attr.aria-label]="'Hide password'"
+						[attr.aria-pressed]="hideSenhaNova">
+						<mat-icon>{{hideSenhaNova ? 'visibility_off' : 'visibility'}}</mat-icon>
+					</button>
+				</mat-form-field>
+			</div>
+			<div class="col-md-6">
+				<mat-form-field color="accent" appearance="outline">
+					<mat-label>Confirmar Senha Nova</mat-label>
+					<input matInput [type]="hideConfirmarSenhaNova ? 'password' : 'text'" formControlName="confirmarSenha">
+					<button mat-icon-button matSuffix (click)="hideConfirmarSenhaNova = !hideConfirmarSenhaNova" [attr.aria-label]="'Hide password'"
+						[attr.aria-pressed]="hideConfirmarSenhaNova">
+						<mat-icon>{{hideConfirmarSenhaNova ? 'visibility_off' : 'visibility'}}</mat-icon>
+					</button>
+				</mat-form-field>
+			</div>
+		</div>
+	</form>
+</div>
+<div mat-dialog-actions class="button-row">
+	<button mat-raised-button class="button" color="accent" (click)="atualizar()" [disabled]="!form.valid">
+		{{ botaoLabel }}
+	</button>
+</div>

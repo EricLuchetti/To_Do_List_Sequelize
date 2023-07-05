@@ -1,0 +1,36 @@
+.row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	mat-form-field {
+		width: 30vh;
+	}
+  }
+
+  .button-row {
+	display: flex;
+	max-width: 100%;
+	justify-content: center;
+  }
+
+  @media screen and (min-width: 700px) {
+	.row {
+		mat-form-field {
+			width: 50vh;
+		}
+	}
+
+	.button-row {
+		display: flex;
+		max-width: 100%;
+		justify-content: center;
+		width: 50vh;
+		margin: 0 auto;
+
+		&.button {
+			width: 50px;
+		}
+	}
+  }

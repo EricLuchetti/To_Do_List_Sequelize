@@ -1,0 +1,59 @@
+<div class="container" *ngIf="(autenticated | async); else areaAberta">
+	<mat-toolbar class="toolbar">
+		<div class="botao-sair" (click)="logout()">
+			<mat-icon class="mat-icon-size">logout</mat-icon>
+		</div>
+		<div class="botao-menu">
+			<button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+		</div>
+		<h1 class="app-name">Lista de Tarefas</h1>
+		<div class="icone">
+			<span class="material-symbols-outlined tema" (click)="mudarTema()">{{ retornarTema() }}</span>
+		</div>
+		<div class="icone usuario">
+			<span class="material-symbols-outlined usuario" (click)="perfilUsuario()">person</span>
+		</div>
+	</mat-toolbar>
+
+	<mat-sidenav-container class="sidenav-container">
+		<mat-sidenav #snav [mode]="'side'" (click)="snav.toggle()">
+			<mat-divider></mat-divider>
+			<div class="box-item" (click)="listar()">
+				<div class="box-item-content">
+					<mat-icon class="mat-icon-size">list</mat-icon>
+				</div>
+				<div class="box-item-content label">
+					<p>Tarefas</p>
+				</div>
+			</div>
+			<mat-divider></mat-divider>
+			<div class="box-item" (click)="listarPrioridades()">
+				<div class="box-item-content">
+					<mat-icon class="mat-icon-size">bookmark</mat-icon>
+				</div>
+				<div class="box-item-content label">
+					<p>Prioridades</p>
+				</div>
+			</div>
+			<mat-divider></mat-divider>
+			<div class="box-item" (click)="logout()">
+				<div class="box-item-content">
+					<mat-icon class="mat-icon-size">logout</mat-icon>
+				</div>
+				<div class="box-item-content label">
+					<p>Sair</p>
+				</div>
+			</div>
+			<mat-divider></mat-divider>
+		</mat-sidenav>
+
+		<mat-sidenav-content>
+			<router-outlet></router-outlet>
+		</mat-sidenav-content>
+
+	</mat-sidenav-container>
+</div>
+
+<ng-template #areaAberta>
+	<router-outlet></router-outlet>
+</ng-template>

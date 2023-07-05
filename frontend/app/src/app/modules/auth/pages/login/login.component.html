@@ -1,0 +1,40 @@
+<div align="center" class="container">
+	<mat-card>
+		<div class="card-header">
+			<p class="card-title">LISTA DE TAREFAS</p>
+			<p class="text-secondary">Digite seu login e senha</p>
+		</div>
+		<form [formGroup]="form">
+			<div class="row mt-2">
+				<div class="form-content">
+					<mat-form-field color="accent" appearance="outline">
+						<mat-label>Login</mat-label>
+						<input matInput formControlName="login">
+					</mat-form-field>
+				</div>
+				<div class="form-content">
+					<mat-form-field color="accent" appearance="outline">
+						<mat-label>Senha</mat-label>
+						<input matInput [type]="hide ? 'password' : 'text'" formControlName="senha">
+						<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+							[attr.aria-pressed]="hide">
+							<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+						</button>
+					</mat-form-field>
+				</div>
+			</div>
+			<div>
+				<button mat-raised-button color="accent" (click)="login()" [disabled]="!form.valid">Entrar</button>
+			</div>
+		</form>
+		<div class="recuperar-senha" align="center">
+			<p class="text-secondary mat-body-1">
+				<a [routerLink]="'/auth/recuperar-senha'" routerLinkActive="active">Esqueceu a senha?</a>
+			</p>
+		</div>
+		<mat-divider></mat-divider>
+		<div class="cadastrar">
+			<button mat-raised-button color="primary" [routerLink]="'/auth/cadastrar'">Criar nova conta</button>
+		</div>
+	</mat-card>
+</div>
